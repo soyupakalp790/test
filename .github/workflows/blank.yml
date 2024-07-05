@@ -1,19 +1,20 @@
-netspaker_scan_job:
-    runs-on: ubuntu-20.04
-    steps:
-      # Starts actions with given inputs
-      - name: Start Netsparker Enterprise Scan
-        uses: netsparker/Netsparker-Cloud-GitHub-Actions@v0.2.2
-        id: netsparker-enterprise-scan-step
-        with:
-          website-id: '31745cf5-0edb-4838-2da6-b0d502d93bdd'
-          scan-type: 'FullWithPrimaryProfile'
-          profile-id: '00000000-0000-0000-0000-000000000000'
-          user-id: ${{ secrets.NETSPARKER_USER_ID }}
-          api-token: ${{ secrets.NETSPARKER_API_TOKEN }}
-          base-url: 'https://eu.netsparker.cloud'
-          fail-on-level: 'DoNotFail'
-          wait-for-completion: false
-      # Displays output for action
-      - name: Display Scan Request Message
-        run: echo "${{ steps.netsparker-enterprise-scan-step.outputs.scan-message }}"
+on: workflow_dispatch
+    netspaker_scan_job:
+        runs-on: ubuntu-20.04
+        steps:
+          # Starts actions with given inputs
+          - name: Start Netsparker Enterprise Scan
+            uses: netsparker/Netsparker-Cloud-GitHub-Actions@v0.2.2
+            id: netsparker-enterprise-scan-step
+            with:
+              website-id: '31745cf5-0edb-4838-2da6-b0d502d93bdd'
+              scan-type: 'FullWithPrimaryProfile'
+              profile-id: '00000000-0000-0000-0000-000000000000'
+              user-id: ${{ secrets.NETSPARKER_USER_ID }}
+              api-token: ${{ secrets.NETSPARKER_API_TOKEN }}
+              base-url: 'https://eu.netsparker.cloud'
+              fail-on-level: 'DoNotFail'
+              wait-for-completion: false
+          # Displays output for action
+          - name: Display Scan Request Message
+            run: echo "${{ steps.netsparker-enterprise-scan-step.outputs.scan-message }}"
