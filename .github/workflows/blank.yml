@@ -1,4 +1,5 @@
-on: workflow_dispatch
+on:
+  workflow_dispatch:
     netspaker_scan_job:
         runs-on: ubuntu-20.04
         steps:
